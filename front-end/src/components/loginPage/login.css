@@ -1,0 +1,182 @@
+
+
+
+.auth-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-height: 100vh;
+  font-family: Arial, sans-serif;
+  color: #fff;
+  max-width: 100vw;
+  background-color: #2575fc;
+}
+
+.form-container {
+  width: 70%;
+  height: 50%;
+  position: relative;
+  margin: auto;
+  
+  perspective: 1000px; 
+}
+
+.image-container {
+  width: 90%;
+  display: flex;
+  margin: auto;
+  justify-content: center; /* Center the image horizontally */
+  align-items: center; /* Center the image vertically */
+  height: 100%; /* Make sure the container takes the full height of the viewport */
+  gap:30px;
+}
+
+.image {
+  width: 60%;
+  max-width: 500px; 
+  height: 500px; /* Set a fixed height or adjust based on the image */
+  background-image: url('login1.jpg');
+  background-size: cover; /* Make sure the image covers the div completely */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  border-radius: 30px;
+}
+
+/* Cubic flip styles */
+.form-container .flip-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.8s cubic-bezier(0.77, 0.2, 0.05, 1.0);
+}
+
+.form-container .flip-card.flipped {
+
+  transform: rotateY(180deg);
+}
+
+.auth-form,
+.signup-form {
+  width: 70%;
+  min-height: 400px; 
+  margin-top:100px;
+  backface-visibility: hidden;
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  color: #333;
+  position: absolute;
+  top: 100px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; 
+  align-items: center; 
+}
+
+ .heading {
+  font-size: 1.5em;
+  margin-bottom: 10px;
+}
+
+.subheading {
+  font-size: 0.9em;
+  margin-bottom: 20px;
+  color: #555;
+}
+
+.fieldset {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.fieldset .legend {
+  font-size: 0.8em;
+  position: absolute;
+  top: -10px;
+  left: 10px;
+  background: #fff;
+  padding: 0 5px;
+  color: #6a11cb;
+}
+
+.input-field {
+  width: 90%;
+  height: 20px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  font-size: 1em;
+}
+
+.checkbox-label {
+  font-size: 0.9em;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox {
+  margin-right: 8px;
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background: #6a11cb;
+  color: #fff;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submit-button:hover {
+  background: #2575fc;
+}
+
+/* Toggle link */
+.login-message {
+  font-size: 0.9em;
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-message .toggle-button {
+  background: none;
+  border: none;
+  color: #2575fc;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.login-message .toggle-button:hover {
+  color: #6a11cb;
+}
+
+.signup-form {
+  transform: rotateY(180deg);
+}
+
+
+
+@media (max-width: 768px) {
+  .auth-container {
+    flex-direction: column;
+    height: auto;
+    padding: 20px;
+  }
+
+  .form-container {
+    width: 100%;
+  }
+}
+
+

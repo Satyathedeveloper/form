@@ -1,0 +1,73 @@
+.table-component {
+    width: 100vw;
+    border-collapse: collapse;
+    background-color: #fff;
+  }
+  
+  .table-component th,
+  .table-component td {
+    padding: 0px 0px;
+    text-align: left;
+  }
+  
+  .table-component th {
+    background-color: #f0f0f0;
+    font-weight: bold;
+  }
+  
+
+  .ellipsis {
+    max-width: 70px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  .photo-img {
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+  }
+
+  .resume-link {
+    color: #1890ff;
+    text-decoration: none;
+  }
+  
+  .resume-link:hover {
+    text-decoration: underline;
+  }
+  
+  .actions-container {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .edit-btn {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  .edit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: red;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d32f2f;
+  }
+  
+  .ant-pagination {
+    margin-top: 20px;
+    text-align: center;
+  }
+  
+  .ant-pagination-prev,
+  .ant-pagination-next {
+    border: none;
+  }
+  
