@@ -108,7 +108,7 @@ const TableComponent = ({ data, setDelId, onEdit }) => {
     <Table
       columns={columns}
       dataSource={data}
-      rowKey="user_id" // Ensure the row key is unique
+      rowKey="user_id"
       pagination={{ pageSize: 10 }}
       className="table-component"
     />

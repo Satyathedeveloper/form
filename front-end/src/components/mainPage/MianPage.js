@@ -1,10 +1,9 @@
-
-import moment from 'moment'; import dayjs from 'dayjs';
 import React, { useState, useEffect } from 'react';
 import { Form, Input, Button, Row, Col, Steps, DatePicker, Select, Upload, Tooltip, Radio, Tag, Card } from 'antd';
 import { TreeSelect, Slider } from 'antd';
 import { PictureOutlined, FilePdfOutlined } from '@ant-design/icons';
 import { InfoCircleOutlined } from '@ant-design/icons';
+import dayjs from 'dayjs';
 import axios from 'axios';
 const { Step } = Steps;
 const { Option } = Select;
@@ -26,7 +25,7 @@ const ResumeBuilder = ({ onSubmit, initialValues }) => {
   const onFinish = async (values) => {
 
 
-    if (values.education === undefined || null || Array.length == 0) { // ikkda current step 4 kooda pettu
+    if (values.education === undefined || null || Array.length == 0 && currentStep==3) { // ikkda current step 4 kooda pettu
       form.setFieldsValue({ education: [{}] })
 
     }
@@ -40,10 +39,10 @@ const ResumeBuilder = ({ onSubmit, initialValues }) => {
       console.log(allData);
       console.log('Education field before sending:', allData.education);
       onSubmit(allData);
-      // form.resetFields();
+      form.resetFields();
       setCurrentStep(0);
-      // setTags([]);
-      // setProjTags([]);
+      setTags([]);
+      setProjTags([]);
     }
 
 
@@ -170,6 +169,11 @@ const ResumeBuilder = ({ onSubmit, initialValues }) => {
 
   const handleStateChange = (value) => {
     setSelectedState(value);
+  };
+  const handleSearch = (searchText) => {
+    return countries.filter(country =>
+      country.label.toLowerCase().includes(searchText.toLowerCase())
+    );
   };
   const next = async () => {
     try {
@@ -414,6 +418,8 @@ const ResumeBuilder = ({ onSubmit, initialValues }) => {
               <Col span={8}>
                 <Form.Item label="Country" name="country" rules={[{ required: true, message: 'Please select a country!' }]}>
                   <Select
+                   showSearch
+                    onSearch={handleSearch}
                     placeholder="Select a country"
                     options={countries.map(country => ({ label: country.label, value: country.value }))}
                     onChange={handleCountryChange}
@@ -593,7 +599,7 @@ const ResumeBuilder = ({ onSubmit, initialValues }) => {
           <Form.Item
             label="Describe one of your project in 2-3 line"
             name="comments"
-            rules={[{ required: true }]}
+            rules={[{ required: true, message: 'Description about one of you project is required' }]}
           >
             <Input.TextArea rows={4} placeholder="Share your thoughts..." />
           </Form.Item>

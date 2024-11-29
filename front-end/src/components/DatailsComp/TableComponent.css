@@ -1,16 +1,15 @@
-.table-component {
-    width: 100vw;
+:where(.css-dev-only-do-not-override-1x0dypw).ant-table-wrapper .ant-table-cell, :where(.css-dev-only-do-not-override-1x0dypw).ant-table-wrapper .ant-table-thead>tr>th{
+  width: 100%;
+  padding: 5px 10px;
+  text-align: center;
     border-collapse: collapse;
     background-color: #fff;
   }
-  
-  .table-component th,
-  .table-component td {
-    padding: 0px 0px;
-    text-align: left;
+  :where(.css-dev-only-do-not-override-1x0dypw)[class^="ant-table"] [class^="ant-table"]{
+margin: auto;
   }
   
-  .table-component th {
+  :where(.css-dev-only-do-not-override-1x0dypw).ant-table-wrapper .ant-table-thead>tr>th{
     background-color: #f0f0f0;
     font-weight: bold;
   }
@@ -69,5 +68,8 @@
   .ant-pagination-prev,
   .ant-pagination-next {
     border: none;
+  }
+  :where(.css-dev-only-do-not-override-1x0dypw).ant-table-wrapper .ant-table-thead>tr>th{
+    width: max-content;
   }
   

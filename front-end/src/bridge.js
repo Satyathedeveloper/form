@@ -8,32 +8,33 @@ const Bridge = () => {
     let parts = path.split('/'); 
     const id = parts[parts.length - 1];
     useEffect(() => {
-        const fetchData = async () => {
-           
-            console.log(id);
-            
-            try {
-                const response = await fetch(`http://localhost:5000/api/records/${id}`);
-
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
-                }
-
-                const data = await response.json();
-
-                if (Array.isArray(data)) {
-                    setFormData(data);
-                    console.log('Fetched data:', data);
-                } else {
-                    console.error('Expected an array but got:', data);
-                }
-            } catch (error) {
-                console.error('Error fetching data:', error.message || error);
-            }
-        };
 
         fetchData();
     }, []);
+    const fetchData = async () => {
+           
+        console.log(id);
+        
+        try {
+            const response = await fetch(`http://localhost:5000/api/records/${id}`);
+
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+
+            const data = await response.json();
+
+            if (Array.isArray(data)) {
+                setFormData(data);
+                console.log('Fetched data:', data);
+            } else {
+                console.error('Expected an array but got:', data);
+            }
+        } catch (error) {
+            console.error('Error fetching data:', error.message || error);
+        }
+    };
+
     const base64ToFile = (base64, filename, mimeType) => {
         const base64Data = base64.includes('base64,') ? base64.split('base64,')[1] : base64;
 
@@ -58,7 +59,6 @@ const Bridge = () => {
     const handleFormSubmit = async (data) => {
         const formData = new FormData();
         formData.append('uniqukey' , id)
-        // Append non-file fields
         Object.keys(data).forEach((key) => {
             if (key !== 'photo' && key !== 'resume' && key !== 'education') {
                 formData.append(key, data[key]);
@@ -97,12 +97,7 @@ const Bridge = () => {
         });
 
         if (response.ok) {
-            const result = await response.json();
-            if (!editingRecord) {
-                setFormData((prevData) => [...prevData, result]); // Add new record
-            } else {
-                setEditingRecord(null); // Reset editing state
-            }
+            fetchData();
         }
     };
 
@@ -146,6 +141,7 @@ const Bridge = () => {
                 data={formData}
                 onEdit={handleEdit}
                 setDelId={handleDelete}
+                
             />
 
         </>
