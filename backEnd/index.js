@@ -7,7 +7,6 @@ const app = express();
 const port = 5000;
 app.use(express.json()); 
 app.use(cors()); 
-
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
 
